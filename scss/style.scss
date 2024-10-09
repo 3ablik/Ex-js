@@ -35,7 +35,12 @@ body{
     align-items: center;
 
 }
-
+#bin_point:hover{
+    cursor: pointer;
+}
+#profile_point:hover{
+    cursor: pointer;
+}
 
 .header__body{
     display: flex;
@@ -120,4 +125,7 @@ body{
 .tovar_bin{
     width: 25px;
     height: 25px;
+}
+.tovar_bin:hover{
+    cursor: pointer;
 }
