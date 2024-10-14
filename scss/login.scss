@@ -1,0 +1,131 @@
+@import './extends.scss';
+
+
+$font-family: "Montserrat", sans-serif;
+body{
+    background: #eaeaea;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 1135px;
+    height: 900px;
+    background: #eaeaea;
+    margin: 0 auto;
+
+}
+.header__nav{
+    width: 1135px;
+    height: 60px;
+    background: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__nav_me{
+    width: 119px;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+#bin_point:hover{
+    cursor: pointer;
+}
+#profile_point:hover{
+    cursor: pointer;
+}
+
+.header__body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1135px;
+    height: 702px;
+}
+
+.header__body_img{
+    width: 70%;
+    height: 70%;
+}
+
+.header-title{
+    @include text($font-family, 600, 30px, #000);
+    text-align: left;
+}
+.desc{
+    @include text($font-family, 300, 15px, #000);
+    width: 429px;
+}
+
+
+.main{
+    margin: 0 auto;
+    width: 1135px;
+}
+
+.main_choose{
+    width: 100%;
+    
+}
+.choose{
+    @include text($font-family, 500, 15px, #101010);
+    border: none;
+}
+
+.tovars{
+    margin-top: 50px;
+    width: 1110px;
+    height: 845px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+
+}
+.tovar{
+    border-radius: 30px;
+    width: 350px;
+    height: 407px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.tovar_img{
+    width: 219px;
+    height: 237px;
+}
+.tovar_data{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+.tovar_title{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+    @include text($font-family, 600, 17px, #1c1c27);
+
+    width: 300px;
+}
+.tovar_price{
+    @include text($font-family, 600, 17px, #ffa542);
+}
+.tovar_bin{
+    width: 25px;
+    height: 25px;
+}
+.tovar_bin:hover{
+    cursor: pointer;
+}
