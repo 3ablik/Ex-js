@@ -1,6 +1,7 @@
 const sortType = document.getElementById("sortType")
 const main = document.querySelector("main")
 const tovars = document.querySelector(".tovars") //основные константы
+const bin = document.getElementById("bin_point")
 
 let selected
 
@@ -31,8 +32,13 @@ class Show{ //Использовал классы
     } //Создает переменную для всех товаров на странице
 }
 let tovarBin
-
-let binList = []
+let binList
+if (JSON.parse(localStorage.getItem("binStorage")) < 1) {
+    binList = []
+}
+else{
+    binList = JSON.parse(localStorage.getItem("binStorage"))
+}
 
 fetch("https://fakestoreapi.com/products")
 .then(res=> res.json())
@@ -104,5 +110,4 @@ function renderTovars(data) {
     }
 }
 
-localStorage.clear()
 

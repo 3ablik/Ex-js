@@ -1,0 +1,174 @@
+@import url("https://fonts.cdnfonts.com/css/montserrat");
+body {
+  background: #eaeaea;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1135px;
+  background: #eaeaea;
+  margin: 0 auto;
+}
+
+.header__nav {
+  width: 1135px;
+  height: 60px;
+  background: #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__nav_me {
+  width: 119px;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#main_point:hover {
+  cursor: pointer;
+}
+
+#profile_point:hover {
+  cursor: pointer;
+}
+
+.header__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1135px;
+  height: 702px;
+}
+
+.header__body_img {
+  width: 70%;
+  height: 70%;
+}
+
+.pay_title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  color: #000;
+  text-align: center;
+}
+
+.pay_offer {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: #000;
+  margin-top: 25px;
+  width: 700px;
+  text-align: center;
+}
+
+.main {
+  margin: 50px auto;
+  width: 1135px;
+  display: flex;
+  justify-content: center;
+}
+
+.main_choose {
+  width: 100%;
+}
+
+.choose {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #101010;
+  border: none;
+}
+
+.bins {
+  margin-top: 50px;
+  width: 1110px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.tovar {
+  border-radius: 30px;
+  width: 350px;
+  height: 407px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tovar_img {
+  width: 219px;
+  height: 237px;
+}
+
+.tovar_data {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tovar_title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: #1c1c27;
+  width: 300px;
+}
+
+.tovar_price {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: #ffa542;
+  text-align: center;
+}
+
+.tovar_bin {
+  width: 25px;
+  height: 25px;
+}
+
+.tovar_bin:hover {
+  cursor: pointer;
+}
+
+.pay_block {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buy {
+  margin-top: 25px;
+  width: 800px;
+  height: 200px;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 50px;
+  color: #000;
+}
+
+.buy:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=payZone.css.map */
