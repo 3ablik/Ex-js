@@ -4,7 +4,7 @@ const pass = document.getElementById("pass")
 const sign = document.getElementById("in")
 
 let accounts
-if (JSON.parse(localStorage.getItem("accounts")) < 1) {
+if (JSON.parse(localStorage.getItem("accounts")).length < 1) {
     accounts = []
 }
 else{
@@ -39,8 +39,43 @@ class Person{
     }
 }
 
+let stat = true
 
 sign.addEventListener("click", ()=>{
     let newAcc = new Person(login.value, em.value, pass.value)
-    newAcc.createPerson()
+    login.value = login.value.trim()
+    em.value = em.value.trim()
+    pass.value = pass.value.trim()
+    if (login.value == "" || em.value == "" || pass.value == "") {
+        alert("No.")
+    }
+    else{
+        if (accounts.length != 0){
+            for (let i = 0; i < accounts.length; i++) {
+                if (accounts[i].login == login.value && accounts[i].em == em.value){
+                    alert("No no no mister Fish. Change Login and Email")
+                    stat = false
+                    break
+                }
+                else if (accounts[i].login == login.value){
+                    alert("No no no mister Fish. Change Login")
+                    stat = false
+                    break
+                }
+                else if (accounts[i].em == em.value) {
+                    alert("No no no mister Fish. Change Email")
+                    stat = false
+                    break
+                }
+            }
+            if (stat == true){
+                newAcc.createPerson()
+                window.location.href = "login.html"
+            }
+        }
+        else{
+            newAcc.createPerson()
+            window.location.href = "login.html"
+        }
+}
 })

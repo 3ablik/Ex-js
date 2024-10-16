@@ -3,11 +3,12 @@ const bins = document.querySelector(".bins")
 const main = document.querySelector(".main")
 
 class Show{ //Использовал классы
-    constructor(category, title, image, price){
+    constructor(category, title, image, price, amount){
         this.category = category
         this.title = title
         this.image = image
         this.price = price
+        this.amount = amount
     }
 
 
@@ -19,7 +20,8 @@ class Show{ //Использовал классы
             <p class="tovar_title">${this.title}</p>
             <div class="tovar_data">
                 <p class="tovar_price">${this.price}</p>
-                <img src="./img/корзина.png" alt="" class="tovar_bin">
+                <p class="tovar_price">${this.amount}</p>
+
             </div>
         </div>`
     } //Буквальный рендер через this, впихивает в хтмл
@@ -27,7 +29,7 @@ class Show{ //Использовал классы
 
 if (binTovars != null) {
     binTovars.forEach(element => {
-        let tovarShow = new Show(element.category, element.title, element.image, element.price)
+        let tovarShow = new Show(element.category, element.title, element.image, element.price, element.amount)
         tovarShow.render()
     });
     main.innerHTML += `<a href="./payZone.html"><button id="buyBin">Купить все</button></a>`

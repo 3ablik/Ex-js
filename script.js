@@ -2,8 +2,45 @@ const sortType = document.getElementById("sortType")
 const main = document.querySelector("main")
 const tovars = document.querySelector(".tovars") //основные константы
 const bin = document.getElementById("bin_point")
+const profile = document.getElementById("profile_point")
+let exitBtn = document.getElementById("exit_btn")
+const nav = document.querySelector(".header__nav_me")
+
+
+let loggd = false
+let exiting = false
+
+if (localStorage.getItem("logged")){
+    logged = true
+}
 
 let selected
+
+profile.addEventListener("click", (e)=>{
+    e.stopPropagation() // Останавливаем всплытие события, чтобы клик на кнопку профиля не скрывал меню
+    exitBtn.style.display = "block"
+    profile.style.display = "none"
+    exitBtn.style.display = "block"
+    exitBtn.style.background = "red"
+    exitBtn.style.color = "white"
+    exitBtn.style.fontSize = "12px"
+    exitBtn.innerText = "Выйти???"
+    exiting = true
+})
+
+exitBtn.addEventListener("click", ()=>{
+    window.location.href = "login.html"
+    
+})
+document.addEventListener("click", (e) => {
+    console.log(e)
+    if (e.target !== exitBtn) {
+        exitBtn.style.display = "none"
+        profile.style.display ="block"
+        exiting = false
+    }
+}) 
+
 
 class Show{ //Использовал классы
     constructor(category, title, image, price){
@@ -33,12 +70,7 @@ class Show{ //Использовал классы
 }
 let tovarBin
 let binList
-if (JSON.parse(localStorage.getItem("binStorage")) < 1) {
-    binList = []
-}
-else{
-    binList = JSON.parse(localStorage.getItem("binStorage"))
-}
+
 
 fetch("https://fakestoreapi.com/products")
 .then(res=> res.json())
@@ -51,22 +83,43 @@ fetch("https://fakestoreapi.com/products")
             tovarBin = tovar.variableAll()
             console.log(tovarBin)
             tovarBin.forEach((e, index)=> e.addEventListener("click", function (e) {
+                if (JSON.parse(localStorage.getItem("binStorage")) < 1) {
+                    binList = []
+                }
+                else{
+                    binList = JSON.parse(localStorage.getItem("binStorage"))
+                }
                 let tovarAllData = e.target.parentElement.parentElement.children
                 tovarData = tovarAllData[2].children
                 tovarImg = tovarAllData[0].src
                 tovarTitle = tovarAllData[1].innerText
                 tovarPrice = tovarData[0].innerText
                 console.log(tovarImg, tovarTitle, tovarPrice, index) //Получает все данные в виде текста
+
                 for (let k = 0; k < data.length; k++) {
                     if (data[k].title == tovarTitle || data[k].image == tovarImg) {
-                        let bin = {
-                            category: data[k].category,
-                            title: data[k].title,
-                            image: data[k].image, 
-                            price: data[k].price
+
+
+                        let existingTovar = binList.find(item => item.title == tovarTitle && item.image == tovarImg)
+
+                        if (existingTovar) {
+                            // Если товар уже в корзине, увеличиваем его количество
+                            existingTovar.amount += 1
                         }
-                        binList.push(bin)
-                        localStorage.setItem("binStorage", JSON.stringify(binList))
+
+
+                        else{
+                            let bin = {
+                                category: data[k].category,
+                                title: data[k].title,
+                                image: data[k].image, 
+                                price: data[k].price,
+                                amount: 1
+                            }
+                            binList.push(bin)                      
+                        }
+                        localStorage.setItem("binStorage", JSON.stringify(binList))  
+
                     }
                     
                 }
@@ -109,5 +162,3 @@ function renderTovars(data) {
         tovar.render()
     }
 }
-
-

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/reset.css">
 </head>
 <body>
     <header class = "header">
@@ -13,7 +14,7 @@
             <img src="./img/logo.png" alt="">
             <div class="header__nav_me">
                 <a id="bin_point">Nope</a>
-                <a id="profile_point">:)</a>
+                <a id="profile_point" href="./index.html">:)</a>
             </div>
         </nav>
         <div class="header__body">
@@ -22,12 +23,13 @@
                 <p class="desc">Войдите в аккаунт пж</p>
             </div>
             <input type="text" id="log" placeholder="Логин">
-            <input type="email" id="em" placeholder="Почта">
             <input type="password"  id="pass" placeholder="Пароль">
+            <button id="in">Готово</button>
         </div>
     </header>
     <main class="main">
         <a href="register.html"><button class="no_bchs">Нет аккаунта?</button></a>
     </main>
+    <script src="login.js"></script>
 </body>
 </html>

@@ -18,6 +18,12 @@ body{
     margin: 0 auto;
 
 }
+button:hover{
+    cursor: pointer;
+}
+#exit_btn{
+    display: none;
+}
 .header__nav{
     width: 1135px;
     height: 60px;
