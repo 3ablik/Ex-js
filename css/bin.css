@@ -155,4 +155,11 @@ body {
 
 #buyBin:hover {
   cursor: pointer;
+}
+
+.amount_all {
+  width: 100px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }/*# sourceMappingURL=bin.css.map */

@@ -100,8 +100,8 @@ fetch("https://fakestoreapi.com/products")
                     if (data[k].title == tovarTitle || data[k].image == tovarImg) {
 
 
-                        let existingTovar = binList.find(item => item.title == tovarTitle && item.image == tovarImg)
-
+                        let existingTovar = binList.find(item => item.title.trim() == tovarTitle)
+                        console.log(existingTovar)
                         if (existingTovar) {
                             // Если товар уже в корзине, увеличиваем его количество
                             existingTovar.amount += 1
