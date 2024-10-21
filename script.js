@@ -5,27 +5,37 @@ const bin = document.getElementById("bin_point")
 const profile = document.getElementById("profile_point")
 let exitBtn = document.getElementById("exit_btn")
 const nav = document.querySelector(".header__nav_me")
+const search = document.getElementById("search_by_name")
 
 
-let loggd = false
+let logged = false
 let exiting = false
 
-if (localStorage.getItem("logged")){
+if (localStorage.getItem("logged") == true){
     logged = true
+}
+else if(localStorage.getItem("logged") == null){
+    logged = false
 }
 
 let selected
 
 profile.addEventListener("click", (e)=>{
-    e.stopPropagation() // Останавливаем всплытие события, чтобы клик на кнопку профиля не скрывал меню
-    exitBtn.style.display = "block"
-    profile.style.display = "none"
-    exitBtn.style.display = "block"
-    exitBtn.style.background = "red"
-    exitBtn.style.color = "white"
-    exitBtn.style.fontSize = "12px"
-    exitBtn.innerText = "Выйти???"
-    exiting = true
+    if (logged) {
+        e.stopPropagation() // Я не знаю как работает, но без этого не работает
+        exitBtn.style.display = "block"
+        profile.style.display = "none"
+        exitBtn.style.display = "block"
+        exitBtn.style.background = "red"
+        exitBtn.style.color = "white"
+        exitBtn.style.fontSize = "12px"
+        exitBtn.innerText = "Выйти???"
+        exiting = true        
+    }
+    else{
+        window.location.href = "login.html"
+    }
+
 })
 
 exitBtn.addEventListener("click", ()=>{
@@ -128,7 +138,27 @@ fetch("https://fakestoreapi.com/products")
             
         }   
     
-    getTarget(tovar)
+    if (logged == true) {
+        getTarget(tovar)
+    }
+    else{
+        tovarBin = tovar.variableAll()
+        console.log(tovarBin)
+        tovarBin.forEach((e, index)=> e.addEventListener("click", function (e) {
+            if (JSON.parse(localStorage.getItem("binStorage")) < 1) {
+                binList = []
+            }
+            else{
+                binList = JSON.parse(localStorage.getItem("binStorage"))
+            }
+            let tovarCard = e.target.parentElement.parentElement
+            console.log(tovarCard, index)
+            let errorMsg = document.createElement("p")
+            errorMsg.textContent = "Please, Login first"
+            errorMsg.style.color = "red"
+            tovarCard.append(errorMsg)
+        }))
+    }
      
        
     sortType.addEventListener("change", ()=>{
@@ -150,9 +180,14 @@ fetch("https://fakestoreapi.com/products")
 
             getTarget(tovar)
         }
-        
-        
+    })
 
+    search.addEventListener("change", ()=>{
+        let searchInput = search.value
+        let results = data.filter(item => item.title.toLowerCase().includes(searchInput.toLowerCase()));
+        console.log(results);
+        tovars.innerHTML = ""
+        renderTovars(results)
     })
 })
 

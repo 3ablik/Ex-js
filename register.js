@@ -2,9 +2,10 @@ const login = document.getElementById("log")
 const em = document.getElementById("em")
 const pass = document.getElementById("pass")
 const sign = document.getElementById("in")
+const inputDiv = document.querySelector(".inputs")
 
 let accounts
-if (JSON.parse(localStorage.getItem("accounts")).length < 1) {
+if (JSON.parse(localStorage.getItem("accounts")) == null) {
     accounts = []
 }
 else{
@@ -19,12 +20,12 @@ class Person{
     }
 
     createPerson(){
-        let newId = Math.floor(Math.random() * 100000)
+        let newId = Math.floor(Math.random() * 100000000)
         if (JSON.parse(localStorage.getItem("accounts")) > 0) {
             let accs = JSON.parse(localStorage.getItem("accounts"))
             accs.forEach(element => {
                 if(element.id == newId){
-                    newId = Math.floor(Math.random() * 100000)
+                    newId = Math.floor(Math.random() * 100000000)
                 }
             });
         }
@@ -41,29 +42,106 @@ class Person{
 
 let stat = true
 
+
 sign.addEventListener("click", ()=>{
     let newAcc = new Person(login.value, em.value, pass.value)
     login.value = login.value.trim()
     em.value = em.value.trim()
     pass.value = pass.value.trim()
+    let excitingErrorMsg = document.querySelector(".error_msg")
     if (login.value == "" || em.value == "" || pass.value == "") {
-        alert("No.")
+        console.log(excitingErrorMsg)
+        if (excitingErrorMsg == null) {
+            let errorMsg = document.createElement("p")
+            errorMsg.textContent = "Incorrect input value. Please, input all data"
+            errorMsg.style.color = "red"
+            errorMsg.classList.add("error_msg")
+            inputDiv.append(errorMsg)
+        }
+        else{
+            excitingErrorMsg.remove()
+            let errorMsg = document.createElement("p")
+            errorMsg.textContent = "Incorrect input value. Please, input all data"
+            errorMsg.style.color = "red"
+            errorMsg.classList.add("error_msg")
+            inputDiv.append(errorMsg)
+        }
+    }
+    else if(pass.value.length < 8){
+        if (excitingErrorMsg == null) {
+            let errorMsg = document.createElement("p")
+            errorMsg.textContent = "Password length must be more than 8 symbol"
+            errorMsg.style.color = "red"
+            errorMsg.classList.add("error_msg")
+            inputDiv.append(errorMsg)
+        }
+        else{
+            excitingErrorMsg.remove()
+            let errorMsg = document.createElement("p")
+            errorMsg.textContent = "Password length must be more than 8 symbol"
+            errorMsg.style.color = "red"
+            errorMsg.classList.add("error_msg")
+            inputDiv.append(errorMsg)
+        }
     }
     else{
         if (accounts.length != 0){
             for (let i = 0; i < accounts.length; i++) {
                 if (accounts[i].login == login.value && accounts[i].em == em.value){
-                    alert("No no no mister Fish. Change Login and Email")
+                    if (excitingErrorMsg == null) {
+                        let errorMsg = document.createElement("p")
+                        errorMsg.textContent = "No no no Mr.Fish. Change Login and Email"
+                        errorMsg.style.color = "red"
+                        errorMsg.classList.add("error_msg")
+                        inputDiv.append(errorMsg)
+                    }
+                    else{
+                        excitingErrorMsg.remove()
+                        let errorMsg = document.createElement("p")
+                        errorMsg.textContent = "No no no Mr.Fish. Change Login and Email"
+                        errorMsg.style.color = "red"
+                        errorMsg.classList.add("error_msg")
+                        inputDiv.append(errorMsg)
+                    }
                     stat = false
                     break
                 }
                 else if (accounts[i].login == login.value){
-                    alert("No no no mister Fish. Change Login")
+                    if (excitingErrorMsg == null) {
+                        let errorMsg = document.createElement("p")
+                        errorMsg.textContent = "No no no Mr.Fish. Change Login"
+                        errorMsg.style.color = "red"
+                        errorMsg.classList.add("error_msg")
+                        inputDiv.append(errorMsg)
+                    }
+                    else{
+                        excitingErrorMsg.remove()
+                        let errorMsg = document.createElement("p")
+                        errorMsg.textContent = "No no no Mr.Fish. Change Login"
+                        errorMsg.style.color = "red"
+                        errorMsg.classList.add("error_msg")
+                        inputDiv.append(errorMsg)
+                    }
                     stat = false
                     break
+
                 }
                 else if (accounts[i].em == em.value) {
-                    alert("No no no mister Fish. Change Email")
+                    if (excitingErrorMsg == null) {
+                        let errorMsg = document.createElement("p")
+                        errorMsg.textContent = "No no no Mr.Fish. Change Email"
+                        errorMsg.style.color = "red"
+                        errorMsg.classList.add("error_msg")
+                        inputDiv.append(errorMsg)
+                    }
+                    else{
+                        excitingErrorMsg.remove()
+                        let errorMsg = document.createElement("p")
+                        errorMsg.textContent = "No no no Mr.Fish. Change Email"
+                        errorMsg.style.color = "red"
+                        errorMsg.classList.add("error_msg")
+                        inputDiv.append(errorMsg)
+                    }
                     stat = false
                     break
                 }

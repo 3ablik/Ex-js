@@ -1,6 +1,7 @@
 const login = document.getElementById("log")
 const pass = document.getElementById("pass")
 const sign = document.getElementById("in")
+const inputDiv = document.querySelector(".inputs")
 
 let accounts = JSON.parse(localStorage.getItem("accounts"))
 let logged = false
@@ -21,8 +22,23 @@ sign.addEventListener("click", () => {
                 break
             }
         }
+        let excitingErrorMsg = document.querySelector(".error_msg")
         if (!found) {
-            alert("Корявый пароль или логин")
+            if (excitingErrorMsg == null) {
+                let errorMsg = document.createElement("p")
+                errorMsg.textContent = "Uncorrect login or password. Please, try again"
+                errorMsg.style.color = "red"
+                errorMsg.classList.add("error_msg")
+                inputDiv.append(errorMsg)
+            }
+            else{
+                excitingErrorMsg.remove()
+                let errorMsg = document.createElement("p")
+                errorMsg.textContent = "Uncorrect login or password. Please, try again"
+                errorMsg.style.color = "red"
+                errorMsg.classList.add("error_msg")
+                inputDiv.append(errorMsg)
+            }
         }
         else{
             logged = true

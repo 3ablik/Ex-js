@@ -152,7 +152,7 @@ body {
   width: 800px;
   height: 50px;
   display: grid;
-  grid-template-columns: repeat(3, 200px);
+  grid-template-columns: repeat(4, 200px);
   grid-template-rows: repeat(2, 25px);
 }
 
@@ -162,4 +162,4 @@ body {
 
 #in {
   width: 150px;
-}/*# sourceMappingURL=login.css.map */
+}/*# sourceMappingURL=register.css.map */
