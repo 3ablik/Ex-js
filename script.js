@@ -11,7 +11,7 @@ const search = document.getElementById("search_by_name")
 let logged = false
 let exiting = false
 
-if (localStorage.getItem("logged") == true){
+if (JSON.parse(localStorage.getItem("logged")) == true){
     logged = true
 }
 else if(localStorage.getItem("logged") == null){
