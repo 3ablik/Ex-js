@@ -13,6 +13,7 @@ let exiting = false
 
 if (JSON.parse(localStorage.getItem("logged")) == true){
     logged = true
+    userNowId = JSON.parse(localStorage.getItem("lastUserLogged"))
 }
 else if(localStorage.getItem("logged") == null){
     logged = false
@@ -110,7 +111,7 @@ fetch("https://fakestoreapi.com/products")
                     if (data[k].title == tovarTitle || data[k].image == tovarImg) {
 
 
-                        let existingTovar = binList.find(item => item.title.trim() == tovarTitle)
+                        let existingTovar = binList.find(item => item.title.trim() == tovarTitle && item.id == userNowId)
                         console.log(existingTovar)
                         if (existingTovar) {
                             // Если товар уже в корзине, увеличиваем его количество
@@ -124,6 +125,7 @@ fetch("https://fakestoreapi.com/products")
                                 title: data[k].title,
                                 image: data[k].image, 
                                 price: data[k].price,
+                                id: userNowId,
                                 amount: 1
                             }
                             binList.push(bin)                      
@@ -145,12 +147,6 @@ fetch("https://fakestoreapi.com/products")
         tovarBin = tovar.variableAll()
         console.log(tovarBin)
         tovarBin.forEach((e, index)=> e.addEventListener("click", function (e) {
-            if (JSON.parse(localStorage.getItem("binStorage")) < 1) {
-                binList = []
-            }
-            else{
-                binList = JSON.parse(localStorage.getItem("binStorage"))
-            }
             let tovarCard = e.target.parentElement.parentElement
             console.log(tovarCard, index)
             let errorMsg = document.createElement("p")

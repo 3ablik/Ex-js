@@ -52,6 +52,7 @@ sign.addEventListener("click", ()=>{
     console.log(em.value);
     console.log(pass.value);
     let excitingErrorMsg = document.querySelector(".error_msg")
+    console.log(excitingErrorMsg);
     if (login.value == "" || em.value == "" || pass.value == "") {
         console.log(excitingErrorMsg)
         if (excitingErrorMsg == null) {
@@ -147,6 +148,9 @@ sign.addEventListener("click", ()=>{
                     }
                     stat = false
                     break
+                }
+                else{
+                    stat = true
                 }
             }
             if (stat == true){

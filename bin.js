@@ -1,9 +1,57 @@
 let binTovars = JSON.parse(localStorage.getItem("binStorage"))
+console.log(binTovars);
 let bins = document.querySelector(".bins")
 const main = document.querySelector(".main")
 const logged = JSON.parse(localStorage.getItem("logged"))
-console.log(logged);
 
+console.log(logged);
+let userNowId = JSON.parse(localStorage.getItem("lastUserLogged"))
+let lastUserBin = []
+if (binTovars != null) {
+    for (let index = 0; index < binTovars.length; index++) {
+        if (binTovars[index].id == userNowId) {
+            lastUserBin.push(binTovars[index])
+            console.log(index);
+            console.log(binTovars[index]);
+        }
+        
+    }    
+}
+
+const profile = document.getElementById("profile_point")
+const exitBtn = document.getElementById("exit_btn")
+profile.addEventListener("click", (e)=>{
+    if (logged) {
+        e.stopPropagation() // Я не знаю как работает, но без этого не работает
+        exitBtn.style.display = "block"
+        profile.style.display = "none"
+        exitBtn.style.display = "block"
+        exitBtn.style.background = "red"
+        exitBtn.style.color = "white"
+        exitBtn.style.fontSize = "12px"
+        exitBtn.innerText = "Выйти???"
+        exiting = true        
+    }
+    else{
+        window.location.href = "login.html"
+    }
+
+})
+
+exitBtn.addEventListener("click", ()=>{
+    window.location.href = "login.html"
+    
+})
+document.addEventListener("click", (e) => {
+    console.log(e)
+    if (e.target !== exitBtn) {
+        exitBtn.style.display = "none"
+        profile.style.display ="block"
+        exiting = false
+    }
+}) 
+
+let total = 0
 
 class Show{ //Использовал классы
     constructor(category, title, image, price, amount){
@@ -47,6 +95,8 @@ class Show{ //Использовал классы
         tovarAmount.textContent = this.amount
         tovarAmount.classList.add("tovar_price")
 
+        total = total + this.amount*this.price
+
         tovarCard.append(tovarImg)
         tovarCard.append(tovarTitle)
         tovarCard.append(tovarData)
@@ -71,22 +121,25 @@ class Show{ //Использовал классы
 
         //     </div>
         // </div>`
-        console.log(this.image)
-        console.log(this.title)
-        console.log(this.price)
-        console.log(this.amount)
     } //Буквальный рендер через this, впихивает в хтмл
 }
 
 
 
-if (binTovars != null) {
-    binTovars.forEach(element => {
+if (lastUserBin.length != 0) {
+    lastUserBin.forEach(element => {
         let tovarShow = new Show(element.category, element.title, element.image, element.price, element.amount)
         tovarShow.render()
     });
     
-    main.innerHTML += `<a href="./payZone.html"><button id="buyBin">Купить все</button></a>`
+    main.innerHTML += `
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class = tovar_price> Total: ${total}<p>    
+    <a href="./payZone.html"><button id="buyBin">Купить все</button></a>
+    `
 }
 else{
     main.innerHTML += `<p class="desc">Пусто...</p>`
@@ -107,20 +160,28 @@ reduceBtn.forEach((e, index)=>{
         console.log(tovarAmount)
         console.log(tovarImg, tovarTitle, tovarAmount, index) //Получает все данные в виде текста
         tovarAmount--
-        console.log(uBinStorage)
-        for (let i = 0; i < uBinStorage.length; i++) {
-            console.log(tovarTitle)
-            console.log(uBinStorage[i].title.trim())
+        if (tovarAmount < 1) {
+            let removed = uBinStorage.splice(index, 1)
+            console.log("aaa")
+        }
+        else{
+            console.log(uBinStorage)
+            for (let i = 0; i < uBinStorage.length; i++) {
+                console.log(tovarTitle)
+                console.log(uBinStorage[i].title.trim())
 
-            if (tovarTitle == uBinStorage[i].title.trim()) {
-                uBinStorage[i].amount = tovarAmount
+                if (tovarTitle == uBinStorage[i].title.trim()) {
+                    uBinStorage[i].amount = tovarAmount
+                }
+                
             }
-            
+           
         }
         console.log(uBinStorage)
         localStorage.removeItem("binStorage")
         localStorage.setItem("binStorage", JSON.stringify(uBinStorage))
-        location.reload()
+        location.reload()         
+
     })
 })
 

@@ -162,4 +162,8 @@ body {
   align-items: center;
   display: flex;
   justify-content: space-between;
+}
+
+#exit_btn {
+  display: none;
 }/*# sourceMappingURL=bin.css.map */

@@ -14,6 +14,7 @@
             <div class="header__nav_me">
                 <a id="bin_point" href="index.html"><img src="./img/main.png" alt=""></a>
                 <a id="profile_point"><img src="./img/Profile.png" alt=""></a>
+                <button style="display: none;" id="exit_btn"></button>
             </div>
         </nav>
     </header>
@@ -22,7 +23,47 @@
         <p class="desc">Можете уходить.</p>
     </div>
     <script>
+        let logged
+        if (JSON.parse(localStorage.getItem("logged")) == true){
+            logged = true
+            userNowId = JSON.parse(localStorage.getItem("lastUserLogged"))
+        }
+        else if(localStorage.getItem("logged") == null){
+            logged = false
+        }
         localStorage.removeItem("binStorage")
+        const profile = document.getElementById("profile_point")
+        const exitBtn = document.getElementById("exit_btn")
+        profile.addEventListener("click", (e)=>{
+            if (logged) {
+                e.stopPropagation() // Я не знаю как работает, но без этого не работает
+                exitBtn.style.display = "block"
+                profile.style.display = "none"
+                exitBtn.style.display = "block"
+                exitBtn.style.background = "red"
+                exitBtn.style.color = "white"
+                exitBtn.style.fontSize = "12px"
+                exitBtn.innerText = "Выйти???"
+                exiting = true        
+            }
+            else{
+                window.location.href = "login.html"
+            }
+
+        })
+
+        exitBtn.addEventListener("click", ()=>{
+            window.location.href = "login.html"
+            
+        })
+        document.addEventListener("click", (e) => {
+            console.log(e)
+            if (e.target !== exitBtn) {
+                exitBtn.style.display = "none"
+                profile.style.display ="block"
+                exiting = false
+            }
+        }) 
     </script>
 </body>
 </html>
