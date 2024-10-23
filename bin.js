@@ -1,6 +1,8 @@
 let binTovars = JSON.parse(localStorage.getItem("binStorage"))
 let bins = document.querySelector(".bins")
 const main = document.querySelector(".main")
+const logged = JSON.parse(localStorage.getItem("logged"))
+console.log(logged);
 
 
 class Show{ //Использовал классы

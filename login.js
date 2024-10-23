@@ -4,12 +4,14 @@ const sign = document.getElementById("in")
 const inputDiv = document.querySelector(".inputs")
 
 let accounts = JSON.parse(localStorage.getItem("accounts"))
+localStorage.removeItem("logged")
 let logged = false
 
 sign.addEventListener("click", () => {
     login.value = login.value.trim()
     pass.value = pass.value.trim()
-
+    console.log(login.value);
+    console.log(pass.value);
     if (login == "" || pass == "") {
         alert("Введи все нормально")
     }

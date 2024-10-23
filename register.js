@@ -48,6 +48,9 @@ sign.addEventListener("click", ()=>{
     login.value = login.value.trim()
     em.value = em.value.trim()
     pass.value = pass.value.trim()
+    console.log(login.value);
+    console.log(em.value);
+    console.log(pass.value);
     let excitingErrorMsg = document.querySelector(".error_msg")
     if (login.value == "" || em.value == "" || pass.value == "") {
         console.log(excitingErrorMsg)
