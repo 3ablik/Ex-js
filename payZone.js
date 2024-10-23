@@ -15,3 +15,15 @@ profile.addEventListener("click", ()=>{
         really = true  
     }
 })
+
+const hello = document.getElementById("header-title")
+if (JSON.parse(localStorage.getItem("logged")) == true){
+    logged = true
+    userNowId = JSON.parse(localStorage.getItem("lastUserLogged"))[0]
+    userName = JSON.parse(localStorage.getItem("lastUserLogged"))[1]
+    hello.textContent = `САЛАМАЛЕЙКУМ ${userName}`    
+}
+
+else if(localStorage.getItem("logged") == null){
+    logged = false
+}

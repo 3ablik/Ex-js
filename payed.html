@@ -11,6 +11,7 @@
     <header class = "header">
         <nav class="header__nav">
             <img src="./img/logo.png" alt="">
+            <p class="header-desc" id="header-title"></p>
             <div class="header__nav_me">
                 <a id="bin_point" href="index.html"><img src="./img/main.png" alt=""></a>
                 <a id="profile_point"><img src="./img/Profile.png" alt=""></a>
@@ -30,6 +31,14 @@
         }
         else if(localStorage.getItem("logged") == null){
             logged = false
+        }
+        const hello = document.getElementById("header-title")
+        if (logged == true) {
+            userName = JSON.parse(localStorage.getItem("lastUserLogged"))[1]
+            hello.textContent = `САЛАМАЛЕЙКУМ ${userName}`    
+        }
+        else{
+            hello.textContent = `ЗАРЕГАЙСЯ ПЖ` 
         }
         localStorage.removeItem("binStorage")
         const profile = document.getElementById("profile_point")

@@ -4,20 +4,25 @@ const tovars = document.querySelector(".tovars") //основные конста
 const bin = document.getElementById("bin_point")
 const profile = document.getElementById("profile_point")
 let exitBtn = document.getElementById("exit_btn")
-const nav = document.querySelector(".header__nav_me")
 const search = document.getElementById("search_by_name")
-
-
-let logged = false
+const nav = document.querySelector(".header__nav_me")
+const navAll = document.getElementsByClassName("header__nav")
+const hello = document.getElementById("header-title")
 let exiting = false
+let logged = false
 
 if (JSON.parse(localStorage.getItem("logged")) == true){
     logged = true
-    userNowId = JSON.parse(localStorage.getItem("lastUserLogged"))
+    userNowId = JSON.parse(localStorage.getItem("lastUserLogged"))[0]
+    userName = JSON.parse(localStorage.getItem("lastUserLogged"))[1]
+    hello.textContent = `САЛАМАЛЕЙКУМ ${userName}`    
 }
+
 else if(localStorage.getItem("logged") == null){
     logged = false
 }
+
+
 
 let selected
 
@@ -178,7 +183,7 @@ fetch("https://fakestoreapi.com/products")
         }
     })
 
-    search.addEventListener("change", ()=>{
+    search.addEventListener("input", ()=>{
         let searchInput = search.value
         let results = data.filter(item => item.title.toLowerCase().includes(searchInput.toLowerCase()));
         console.log(results);

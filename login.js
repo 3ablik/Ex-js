@@ -6,7 +6,7 @@ const inputDiv = document.querySelector(".inputs")
 let accounts = JSON.parse(localStorage.getItem("accounts"))
 localStorage.removeItem("logged")
 let logged = false
-let lastUser
+let lastUser = []
 sign.addEventListener("click", () => {
     login.value = login.value.trim()
     pass.value = pass.value.trim()
@@ -21,7 +21,9 @@ sign.addEventListener("click", () => {
         for (let i = 0; i < accounts.length; i++) {
             if (accounts[i].login == login.value && accounts[i].pass == pass.value) {
                 found = true
-                lastUser = accounts[i].id
+                lastUser.push(accounts[i].id)
+                lastUser.push(login.value)
+                
                 break
             }
         }
@@ -46,7 +48,7 @@ sign.addEventListener("click", () => {
         else{
             logged = true
             localStorage.setItem("logged", logged)
-            localStorage.setItem("lastUserLogged", lastUser)
+            localStorage.setItem("lastUserLogged", JSON.stringify(lastUser))
             window.location.href = "index.html"
         }
     } 
