@@ -3,12 +3,14 @@ const main = document.querySelector("main")
 const tovars = document.querySelector(".tovars") //основные константы
 const bin = document.getElementById("bin_point")
 const profile = document.getElementById("profile_point")
-let exitBtn = document.getElementById("exit_btn")
-const search = document.getElementById("search_by_name")
 const nav = document.querySelector(".header__nav_me")
 const navAll = document.getElementsByClassName("header__nav")
 const hello = document.getElementById("header-title")
+let exitBtn = document.getElementById("exit_btn")
 const ls = document.getElementById("ls_point")
+const search = document.getElementById("search_by_name")
+
+
 let exiting = false
 let logged = false
 
@@ -56,7 +58,7 @@ exitBtn.addEventListener("click", ()=>{
 })
 
 ls.addEventListener("click", ()=>{
-    window.location.href = "index.html"
+    window.location.href = "ls.html"
 })
 
 
@@ -99,7 +101,6 @@ class Show{ //Использовал классы
 }
 let tovarBin
 let binList
-
 
 fetch("https://fakestoreapi.com/products")
 .then(res=> res.json())
@@ -185,6 +186,7 @@ fetch("https://fakestoreapi.com/products")
                 if (sortTovar.category == selected) {
                     sortTovar.render()
                     getTarget(sortTovar)
+                    
                 }
             }
             
@@ -202,6 +204,9 @@ fetch("https://fakestoreapi.com/products")
         console.log(results);
         tovars.innerHTML = ""
         renderTovars(results)
+        if (tovars.childElementCount == 0) {
+            tovars.innerHTML = `<p class="desc">Ничего не найдено<p>`
+        }
     })
 })
 
