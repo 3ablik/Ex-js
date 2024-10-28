@@ -119,6 +119,9 @@ fetch("https://fakestoreapi.com/products")
                 else{
                     binList = JSON.parse(localStorage.getItem("binStorage"))
                 }
+
+
+
                 let tovarAllData = e.target.parentElement.parentElement.children
                 tovarData = tovarAllData[2].children
                 tovarImg = tovarAllData[0].src

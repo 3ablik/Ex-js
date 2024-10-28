@@ -121,6 +121,10 @@ editBtn.addEventListener('click', ()=>{
                 error.textContent = "This email is already zanyat"
                 errorStill = true
             }
+            else if (userPass.value.length < 8){
+                error.textContent = "This password is too short. It must be at least 8"
+                errorStill = true                
+            }
         });
         if (error.textContent != undefined && errorStill == true) {
             userDataDiv.append(error)
