@@ -5,7 +5,10 @@ const main = document.querySelector(".main")
 const logged = JSON.parse(localStorage.getItem("logged"))
 
 console.log(logged);
-let userNowId = JSON.parse(localStorage.getItem("lastUserLogged"))[0]
+let userNowId   
+if (logged) {
+    userNowId = JSON.parse(localStorage.getItem("lastUserLogged"))[0] 
+}
 let lastUserBin = []
 if (binTovars != null) {
     for (let index = 0; index < binTovars.length; index++) {
@@ -20,6 +23,7 @@ if (binTovars != null) {
 const navAll = document.getElementsByClassName("header__nav")
 const hello = document.getElementById("header-title")
 if (logged == true) {
+
     userName = JSON.parse(localStorage.getItem("lastUserLogged"))[1]
     hello.textContent = `САЛАМАЛЕЙКУМ ${userName}`    
 }

@@ -8,6 +8,7 @@ const search = document.getElementById("search_by_name")
 const nav = document.querySelector(".header__nav_me")
 const navAll = document.getElementsByClassName("header__nav")
 const hello = document.getElementById("header-title")
+const ls = document.getElementById("ls_point")
 let exiting = false
 let logged = false
 
@@ -29,14 +30,20 @@ let selected
 profile.addEventListener("click", (e)=>{
     if (logged) {
         e.stopPropagation() // Я не знаю как работает, но без этого не работает
-        exitBtn.style.display = "block"
         profile.style.display = "none"
+        exitBtn.style.display = "block"
         exitBtn.style.display = "block"
         exitBtn.style.background = "red"
         exitBtn.style.color = "white"
         exitBtn.style.fontSize = "12px"
         exitBtn.innerText = "Выйти???"
-        exiting = true        
+        exiting = true
+
+        ls.style.display = "block"
+        ls.style.background = "white"
+        ls.style.color = "black"
+        ls.style.fontSize = "12px"
+        ls.innerText = "Личка"
     }
     else{
         window.location.href = "login.html"
@@ -46,12 +53,18 @@ profile.addEventListener("click", (e)=>{
 
 exitBtn.addEventListener("click", ()=>{
     window.location.href = "login.html"
-    
 })
+
+ls.addEventListener("click", ()=>{
+    window.location.href = "index.html"
+})
+
+
 document.addEventListener("click", (e) => {
     console.log(e)
-    if (e.target !== exitBtn) {
+    if (e.target !== exitBtn || e.target !==ls) {
         exitBtn.style.display = "none"
+        ls.style.display = "none"
         profile.style.display ="block"
         exiting = false
     }
