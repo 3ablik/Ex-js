@@ -1,6 +1,8 @@
 const sortType = document.getElementById("sortType")
 const main = document.querySelector("main")
 const tovars = document.querySelector(".tovars") //основные константы
+const search = document.getElementById("search_by_name")
+
 const bin = document.getElementById("bin_point")
 const profile = document.getElementById("profile_point")
 const nav = document.querySelector(".header__nav_me")
@@ -8,7 +10,7 @@ const navAll = document.getElementsByClassName("header__nav")
 const hello = document.getElementById("header-title")
 let exitBtn = document.getElementById("exit_btn")
 const ls = document.getElementById("ls_point")
-const search = document.getElementById("search_by_name")
+
 
 
 let exiting = false
