@@ -119,7 +119,6 @@ fetch("https://fakestoreapi.com/products")
             tovarBin.forEach((e)=>{
                 $(e).click(function(){
                     $(document).ready(function(){
-                    
                         $(e).animate({  now: '-=50' }, {
                             duration:300,
                             step: function(now,fx) {
@@ -154,7 +153,7 @@ fetch("https://fakestoreapi.com/products")
                         });
                     
                     })
-                })})
+                })}) //Анимация корзинки
 
             tovarBin.forEach((e, index)=> e.addEventListener("click", function (e) {
                 if (JSON.parse(localStorage.getItem("binStorage")) < 1) {
@@ -251,6 +250,7 @@ fetch("https://fakestoreapi.com/products")
         console.log(results);
         tovars.innerHTML = ""
         renderTovars(results)
+        getTarget(tovar)
         if (tovars.childElementCount == 0) {
             tovars.innerHTML = `<p class="desc">Ничего не найдено<p>`
         }
@@ -261,5 +261,7 @@ function renderTovars(data) {
     for (let i = 0; i < data.length; i++) {
         let tovar = new Show(data[i].category, data[i].title, data[i].image, data[i].price)
         tovar.render()
+        
     }
+    
 }
