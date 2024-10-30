@@ -13,7 +13,11 @@ sign.addEventListener("click", () => {
     console.log(login.value);
     console.log(pass.value);
     if (login == "" || pass == "") {
-        alert("Введи все нормально")
+        let errorMsg = document.createElement("p")
+        errorMsg.textContent = "Введи все нормально"
+        errorMsg.style.color = "red"
+        errorMsg.classList.add("error_msg")
+        inputDiv.append(errorMsg)
     }
 
     if (accounts != null) {
@@ -53,6 +57,21 @@ sign.addEventListener("click", () => {
         }
     } 
     else {
-        alert("Создай акк сначало")
+        let excitingErrorMsg = document.querySelector(".error_msg")
+        if (excitingErrorMsg == null) {
+            let errorMsg = document.createElement("p")
+            errorMsg.textContent = "Создай акк сначало"
+            errorMsg.style.color = "red"
+            errorMsg.classList.add("error_msg")
+            inputDiv.append(errorMsg)
+        }
+        else{
+            excitingErrorMsg.remove()
+            let errorMsg = document.createElement("p")
+            errorMsg.textContent = "Создай акк сначало"
+            errorMsg.style.color = "red"
+            errorMsg.classList.add("error_msg")
+            inputDiv.append(errorMsg)
+        }
     }
 })

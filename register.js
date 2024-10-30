@@ -41,13 +41,25 @@ class Person{
 }
 
 let stat = true
-
+const specialCharacters = [
+    ".", ",", ":", ";", "!", "?", "@", "#", "$", "%", "^", "&", "*", "(", ")", 
+    "-", "_", "=", "+", "{", "}", "[", "]", "|", "\\", "/", "~", "`", "<", ">", 
+    "\"", "'", "€", "£", "¥", "©", "®", "™", "§", "°", "±", "÷", "×", "•", "¶", "∞"
+];
 
 sign.addEventListener("click", ()=>{
     let newAcc = new Person(login.value, em.value, pass.value)
     login.value = login.value.trim()
     em.value = em.value.trim()
     pass.value = pass.value.trim()
+    let spec = false
+    pass.value.split("").forEach((e)=>{
+        if(specialCharacters.includes(e)){
+            spec = true
+        }
+    })
+        
+    console.log(spec)
     console.log(login.value);
     console.log(em.value);
     console.log(pass.value);
@@ -83,6 +95,23 @@ sign.addEventListener("click", ()=>{
             excitingErrorMsg.remove()
             let errorMsg = document.createElement("p")
             errorMsg.textContent = "Password length must be more than 8 symbol"
+            errorMsg.style.color = "red"
+            errorMsg.classList.add("error_msg")
+            inputDiv.append(errorMsg)
+        }
+    }
+    else if(!spec){
+        if (excitingErrorMsg == null) {
+            let errorMsg = document.createElement("p")
+            errorMsg.textContent = "Password length must include at least 1 special character"
+            errorMsg.style.color = "red"
+            errorMsg.classList.add("error_msg")
+            inputDiv.append(errorMsg)
+        }   
+        else{
+            excitingErrorMsg.remove()
+            let errorMsg = document.createElement("p")
+            errorMsg.textContent = "Password length must include at least 1 special character"
             errorMsg.style.color = "red"
             errorMsg.classList.add("error_msg")
             inputDiv.append(errorMsg)
