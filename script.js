@@ -11,7 +11,7 @@ const hello = document.getElementById("header-title")
 let exitBtn = document.getElementById("exit_btn")
 const ls = document.getElementById("ls_point")
 
-
+const notif = document.getElementById("notif")
 
 let exiting = false
 let logged = false
@@ -20,12 +20,22 @@ if (JSON.parse(localStorage.getItem("logged")) == true){
     logged = true
     userNowId = JSON.parse(localStorage.getItem("lastUserLogged"))[0]
     userName = JSON.parse(localStorage.getItem("lastUserLogged"))[1]
-    hello.textContent = `САЛАМАЛЕЙКУМ ${userName}`    
+    hello.textContent = `САЛАМАЛЕЙКУМ ${userName}`
+    $(hello).click(function(){
+        console.log(hello)
+        $(hello).animate({  now: '+=360' }, {
+            duration:1000,
+            step: function(now,fx) {
+              $(this).css('transform','rotate('+now+'deg)');  
+            }
+        });
+    })
 }
 
 else if(localStorage.getItem("logged") == null){
     logged = false
 }
+
 
 
 
@@ -117,42 +127,59 @@ fetch("https://fakestoreapi.com/products")
 
 
             tovarBin.forEach((e)=>{
+                $(e).click(function() {
+                    $(notif).fadeIn("fast")
+                    $(notif).animate({
+                        top: "+=50",
+                    }, 300)
+                    $(notif).animate({
+                        top: "+=0",
+                    }, 1500)
+                    $(notif).animate({
+                        top: "-=50",
+                    }, 300)
+                    $(notif).fadeOut("fast")
+
+                    
+                })
+
                 $(e).click(function(){
-                    $(document).ready(function(){
-                        $(e).animate({  now: '-=50' }, {
-                            duration:300,
-                            step: function(now,fx) {
-                                $(this).css('transform','rotate('+now+'deg)');
-                            }
-                        });
+                    $(e).animate({  now: '-=50' }, {
+                        duration:300,
+                        step: function(now,fx) {
+                        $(this).css('transform','rotate('+now+'deg)');
+                    }
+                });
+            
+                $(e).animate({  now: '+=440' }, {
+                    duration:1000,
+                    step: function(now,fx) {
+                      $(this).css('transform','rotate('+now+'deg)');  
+                    }
+                });
+            
+                $(e).animate({  now: '-=50' }, {
+                    duration:200,
+                    step: function(now,fx) {
+                      $(this).css('transform','rotate('+now+'deg)');  
+                    }
+                });
+
+                $(e).animate({  now: '+=40' }, {
+                    duration:200,
+                    step: function(now,fx) {
+                      $(this).css('transform','rotate('+now+'deg)');  
+                    }
+                });
+
+                $(e).animate({  now: '-=20' }, {
+                    duration:200,
+                    step: function(now,fx) {
+                      $(this).css('transform','rotate('+now+'deg)');  
+                    }
+                });
                     
-                        $(e).animate({  now: '+=440' }, {
-                            duration:1000,
-                            step: function(now,fx) {
-                              $(this).css('transform','rotate('+now+'deg)');  
-                            }
-                        });
-                    
-                        $(e).animate({  now: '-=50' }, {
-                            duration:200,
-                            step: function(now,fx) {
-                              $(this).css('transform','rotate('+now+'deg)');  
-                            }
-                        });
-                        $(e).animate({  now: '+=40' }, {
-                            duration:200,
-                            step: function(now,fx) {
-                              $(this).css('transform','rotate('+now+'deg)');  
-                            }
-                        });
-                        $(e).animate({  now: '-=20' }, {
-                            duration:200,
-                            step: function(now,fx) {
-                              $(this).css('transform','rotate('+now+'deg)');  
-                            }
-                        });
-                    
-                    })
+                
                 })}) //Анимация корзинки
 
             tovarBin.forEach((e, index)=> e.addEventListener("click", function (e) {

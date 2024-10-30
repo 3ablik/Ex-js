@@ -69,7 +69,12 @@ button:hover{
     @include text($font-family, 300, 15px, #000);
     width: 429px;
 }
-
+.header-desc{
+    @include text($font-family, 300, 15px, #000)
+}
+.header-desc:hover{
+    cursor:help;
+}
 
 .main{
     margin: 0 auto;

@@ -78,6 +78,17 @@ button:hover {
   width: 429px;
 }
 
+.header-desc {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: #000;
+}
+
+.header-desc:hover {
+  cursor: help;
+}
+
 .main {
   margin: 0 auto;
   width: 1135px;
