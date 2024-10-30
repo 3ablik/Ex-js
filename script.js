@@ -92,7 +92,7 @@ class Show{ //Использовал классы
             <p class="tovar_title">${this.title}</p>
             <div class="tovar_data">
                 <p class="tovar_price">${this.price}</p>
-                <img src="./img/корзина.png" alt="" class="tovar_bin">
+                <img src="./img/корзина.png" alt="" class="tovar_bin animation">
             </div>
         </div>`
     } //Буквальный рендер через this, впихивает в хтмл
@@ -114,6 +114,48 @@ fetch("https://fakestoreapi.com/products")
     function getTarget(tovar) {
             tovarBin = tovar.variableAll()
             console.log(tovarBin)
+
+
+            tovarBin.forEach((e)=>{
+                $(e).click(function(){
+                    $(document).ready(function(){
+                    
+                        $(e).animate({  now: '-=50' }, {
+                            duration:300,
+                            step: function(now,fx) {
+                                $(this).css('transform','rotate('+now+'deg)');
+                            }
+                        });
+                    
+                        $(e).animate({  now: '+=440' }, {
+                            duration:1000,
+                            step: function(now,fx) {
+                              $(this).css('transform','rotate('+now+'deg)');  
+                            }
+                        });
+                    
+                        $(e).animate({  now: '-=50' }, {
+                            duration:200,
+                            step: function(now,fx) {
+                              $(this).css('transform','rotate('+now+'deg)');  
+                            }
+                        });
+                        $(e).animate({  now: '+=40' }, {
+                            duration:200,
+                            step: function(now,fx) {
+                              $(this).css('transform','rotate('+now+'deg)');  
+                            }
+                        });
+                        $(e).animate({  now: '-=20' }, {
+                            duration:200,
+                            step: function(now,fx) {
+                              $(this).css('transform','rotate('+now+'deg)');  
+                            }
+                        });
+                    
+                    })
+                })})
+
             tovarBin.forEach((e, index)=> e.addEventListener("click", function (e) {
                 if (JSON.parse(localStorage.getItem("binStorage")) < 1) {
                     binList = []
