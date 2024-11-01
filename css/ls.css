@@ -1,0 +1,128 @@
+@import url("https://fonts.cdnfonts.com/css/montserrat");
+body {
+  background: #eaeaea;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1135px;
+  height: 900px;
+  background: #eaeaea;
+  margin: 0 auto;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#exit_btn {
+  display: none;
+}
+
+.header__nav {
+  width: 1135px;
+  height: 60px;
+  background: #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__nav_me {
+  width: 119px;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#bin_point:hover {
+  cursor: pointer;
+}
+
+#profile_point:hover {
+  cursor: pointer;
+}
+
+.header__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1135px;
+  height: 702px;
+}
+
+.header__body_img {
+  width: 70%;
+  height: 70%;
+}
+
+.header-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  color: #000;
+}
+
+.desc {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: #000;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: #000;
+}
+
+.main-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000;
+  margin-top: 40px;
+}
+
+.main {
+  margin: 0 auto;
+  width: 500px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(252, 247, 217);
+  border-radius: 50px;
+  box-shadow: 10px 10px 20px 20px rgb(233, 236, 216);
+}
+
+.userDataDivs {
+  width: 177px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.user_data {
+  width: 410px;
+  height: 110px;
+  display: grid;
+  grid-template-rows: repeat(2, 60px);
+  grid-template-columns: repeat(2, 200px);
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.edit_btn {
+  width: 177px;
+  height: 40px;
+}/*# sourceMappingURL=ls.css.map */

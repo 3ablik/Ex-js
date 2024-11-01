@@ -5,6 +5,7 @@ const navAll = document.getElementsByClassName("header__nav")
 const hello = document.getElementById("header-title")
 let exitBtn = document.getElementById("exit_btn")
 const ls = document.getElementById("ls_point")
+const main = document.querySelector(".main")
 userNowId = JSON.parse(localStorage.getItem("lastUserLogged"))[0]
 logName = JSON.parse(localStorage.getItem("lastUserLogged"))[1]
 hello.textContent = `САЛАМАЛЕЙКУМ ${logName}`
@@ -57,6 +58,10 @@ document.addEventListener("click", (e) => {
     }
 }) 
 
+const mainP = document.createElement("p")
+mainP.textContent = `How are you doing, ${logName}?`
+mainP.classList.add('main-title')
+main.insertAdjacentElement("afterBegin", mainP)
 
 let nameLabel = document.createElement("p")
 nameLabel.textContent = "Login"
@@ -64,9 +69,14 @@ let userName = document.createElement("input")
 userName.type = "text"
 userName.readOnly = true
 userName.value = user.login
-userDataDiv.append(nameLabel)
-userDataDiv.append(userName)
+
 userName.classList.add("userDatas")
+const logDiv = document.createElement("div")
+logDiv.append(nameLabel)
+logDiv.append(userName)
+logDiv.classList.add("userDataDivs")
+
+userDataDiv.append(logDiv)
 
 let emLabel = document.createElement("p")
 emLabel.textContent = "E-mail"
@@ -74,9 +84,13 @@ let userEm = document.createElement("input")
 userEm.type = "email"
 userEm.readOnly = true
 userEm.value = user.em
-userDataDiv.append(emLabel)
-userDataDiv.append(userEm)
 userEm.classList.add("userDatas")
+
+const emDiv = document.createElement("div")
+emDiv.append(emLabel)
+emDiv.append(userEm)
+userDataDiv.append(emDiv)
+emDiv.classList.add("userDataDivs")
 
 let passLabel = document.createElement("p")
 passLabel.textContent = "Password"
@@ -86,13 +100,26 @@ userPass.readOnly = true
 userPass.value = user.pass
 userDataDiv.append(passLabel)
 userDataDiv.append(userPass)
-userPass.classList.add("userDatas")   
+userPass.classList.add("userDatas") 
+
+const passDiv = document.createElement("div")
+passDiv.append(passLabel)
+passDiv.append(userPass)
+userDataDiv.append(passDiv)
+passDiv.classList.add("userDataDivs")
 
 let editBtn = document.createElement("button")
 editBtn.textContent = "Edit"
-let br = document.createElement("br")
-userDataDiv.append(br)
-userDataDiv.append(editBtn)
+editBtn.classList.add("edit_btn")
+let editLabel = document.createElement("p")
+editLabel.textContent = "Edit/Save"
+
+const editDiv = document.createElement("div")
+editDiv.append(editLabel)
+editDiv.append(editBtn)
+userDataDiv.append(passDiv)
+editDiv.classList.add("userDataDivs")
+userDataDiv.append(editDiv)
 
 let edit = false
 
