@@ -62,6 +62,9 @@ body{
     @include text($font-family, 300, 15px, #000);
     width: 429px;
 }
+.header-desc{
+    @include text($font-family, 300, 15px, #000)
+}   
 
 
 .main{

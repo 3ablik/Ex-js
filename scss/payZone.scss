@@ -64,6 +64,9 @@ body{
     width: 700px;
     text-align: center;
 }
+.header-desc{
+    @include text($font-family, 300, 15px, #000)
+}
 
 
 .main{

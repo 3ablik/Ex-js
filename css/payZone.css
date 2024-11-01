@@ -71,6 +71,13 @@ body {
   text-align: center;
 }
 
+.header-desc {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: #000;
+}
+
 .main {
   margin: 50px auto;
   width: 1135px;
