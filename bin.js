@@ -109,7 +109,7 @@ class Show{ //Использовал классы
         tovarAmount.textContent = this.amount
         tovarAmount.classList.add("tovar_price")
 
-        total = total + this.amount*this.price
+        total = Math.round((total + this.amount*this.price)*1000)/1000
 
         tovarCard.append(tovarImg)
         tovarCard.append(tovarTitle)
